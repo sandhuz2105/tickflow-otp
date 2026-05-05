@@ -15,7 +15,7 @@ app.post('/send-otp', (req, res) => {
     const { phone, otp } = req.body;
     console.log(`Sending OTP ${otp} to ${phone}`);
 
-    const url = `https://2factor.in/API/V1/Xh9eTOG4SCfFcqR30EWZUYQpuIygwa6ozxs75rtjDmdilb8PAvWbhlmfj5kdOH9esCXqN7V2EMDFr1aQ/SMS/${phone}/${otp}/OTP1`;
+    const url = `https://2factor.in/API/V1/65ab5bc8-488a-11f1-9800-0200cd936042/SMS/${phone}/${otp}/OTP1`;
     https.get(url, { headers: { 'cache-control': 'no-cache' } }, (apiRes) => {
         let data = '';
         apiRes.on('data', chunk => data += chunk);
