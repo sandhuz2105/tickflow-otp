@@ -13,16 +13,20 @@ app.use((req, res, next) => {
 
 app.post('/send-otp', (req, res) => {
     const { phone, otp } = req.body;
-    const url = `https://www.fast2sms.com/dev/bulkV2?authorization=Xh9eTOG4SCfFcqR30EWZUYQpuIygwa6ozxs75rtjDmdilb8PAvWbhlmfj5kdOH9esCXqN7V2EMDFr1aQ&route=q&message=Your TickFlow OTP is ${otp}. Valid for 5 minutes.&numbers=${phone}`;
+    console.log(`Sending OTP ${otp} to ${phone}`);
+
+    const url = `https://www.fast2sms.com/dev/bulkV2?authorization=Xh9eTOG4SCfFcqR30EWZUYQpuIygwa6ozxs75rtjDmdilb8PAvWbhlmfj5kdOH9esCXqN7V2EMDFr1aQ&variables_values=${otp}&route=otp&numbers=${phone}`;
 
     https.get(url, { headers: { 'cache-control': 'no-cache' } }, (apiRes) => {
         let data = '';
         apiRes.on('data', chunk => data += chunk);
         apiRes.on('end', () => {
+            console.log('Fast2SMS response:', data);
             try { res.json(JSON.parse(data)); }
             catch { res.json({ message: 'OTP sent' }); }
         });
     }).on('error', (err) => {
+        console.error('Error:', err.message);
         res.status(500).json({ error: 'Failed to send OTP' });
     });
 });
