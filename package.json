@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "express": "*",
-    "node-fetch": "2"
+    "express": "*"
   }
 }
