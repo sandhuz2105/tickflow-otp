@@ -15,7 +15,7 @@ app.post('/send-otp', async (req, res) => {
     const { phone, otp } = req.body;
     try {
         const response = await fetch(
-            `https://www.fast2sms.com/dev/bulkV2?authorization=YOUR_FAST2SMS_API_KEY&route=q&message=Your TickFlow OTP is ${otp}. Valid for 5 minutes.&numbers=${phone}`,
+            ``https://www.fast2sms.com/dev/bulkV2?authorization=Xh9eTOG4SCfFcqR30EWZUYQpuIygwa6ozxs75rtjDmdilb8PAvWbhlmfj5kdOH9esCXqN7V2EMDFr1aQ&route=q&message=Your TickFlow OTP is ${otp}. Valid for 5 minutes.&numbers=${phone}`,
             { method: 'GET', headers: { 'cache-control': 'no-cache' } }
         );
         const data = await response.json();
