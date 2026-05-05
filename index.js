@@ -15,7 +15,7 @@ app.post('/send-otp', (req, res) => {
     const { phone, otp } = req.body;
     console.log(`Sending OTP ${otp} to ${phone}`);
 
-    const url = `https://www.fast2sms.com/dev/bulkV2?authorization=Xh9eTOG4SCfFcqR30EWZUYQpuIygwa6ozxs75rtjDmdilb8PAvWbhlmfj5kdOH9esCXqN7V2EMDFr1aQ&route=q&message=Your TickFlow OTP is ${otp}. Do not share with anyone.&numbers=${phone}&flash=0`;
+    const url = `https://2factor.in/API/V1/YOUR_2FACTOR_API_KEY/SMS/${phone}/${otp}/OTP1`;
     https.get(url, { headers: { 'cache-control': 'no-cache' } }, (apiRes) => {
         let data = '';
         apiRes.on('data', chunk => data += chunk);
